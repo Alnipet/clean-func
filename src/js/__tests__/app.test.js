@@ -19,3 +19,16 @@ describe('should return health status', () => {
     expect(criticalResult).toBe('critical');
   });
 });
+
+// альтернативный вариант
+test.each([
+  [{ name: 'Маг', health: 90 }, 'healthy'],
+  [{ name: 'Маг', health: 50 }, 'wounded'],
+  [{ name: 'Маг', health: 10 }, 'critical'],
+])(
+  'should return %o player %s health status',
+  // eslint-disable-next-line no-unused-vars
+  (player, status) => {
+    expect(playerHealtStatus(player)).toBe(status);
+  },
+);
